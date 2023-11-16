@@ -1,0 +1,24 @@
+name: Pyhton CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]    
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up python 
+        uses: actions/setup-python@v4
+        with: 
+          python-version: 3.11.6
+         
+      - name: Run test
+        run: |
+            python -m unittest test_suma.py
+            
